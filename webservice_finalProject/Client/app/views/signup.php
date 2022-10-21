@@ -1,3 +1,8 @@
+<?php
+    require_once dirname(__DIR__).'/controllers/signupController.php';
+    require_once dirname(__DIR__).'/core/Controller.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,6 +33,30 @@
                     </div>
                 
                     <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">E-Mail</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <!-- Text input-->
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Phone Number</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                <input name="contact_no" placeholder="(XXX) XXX-XXXX " class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
                 
                     <div class="form-group">
                         <label class="col-md-4 control-label" >Password</label> 
@@ -51,30 +80,6 @@
                         </div>
                     </div>
                 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">E-Mail</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
-                            </div>
-                        </div>
-                    </div>
-                
-                
-                    <!-- Text input-->
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Phone Number</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                <input name="contact_no" placeholder="(XXX) XXX-XXXX " class="form-control" type="text">
-                            </div>
-                        </div>
-                    </div>
-                
                     <!-- Button -->
                     <div class="form-group">
                     <label class="col-md-4 control-label"></label>
@@ -89,3 +94,10 @@
         </div><!-- /.container -->
     </body>
 </html>
+
+<?php
+    if(isset($_POST['signup'])){
+        $controller = new signupController();
+        $controller->createUser();
+    }
+?>

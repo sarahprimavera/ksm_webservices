@@ -1,10 +1,15 @@
 <?php
 class Model
 {
-    private $host = DB_HOST;
-    private $user = DB_USER;
-    private $pass = DB_PASS;
-    private $dbname = DB_NAME;
+    // private $host = DB_HOST;
+    // private $user = DB_USER;
+    // private $pass = DB_PASS;
+    // private $dbname = DB_NAME;
+
+    private $host = 'localhost';
+    private $user = 'root';
+    private $pass = '';
+    private $dbname = 'client_db';
 
     private $dbh;
     private $stmt;
