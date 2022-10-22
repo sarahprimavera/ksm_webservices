@@ -1,5 +1,6 @@
 <?php
-
+    require("response.php");
+    
     class ResponseBuilder{
 
         private $response;
