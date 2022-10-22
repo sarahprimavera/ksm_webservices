@@ -2,7 +2,7 @@
 
 require(dirname(__DIR__)."/core/database/dbconnectionmanager.php");
 
-class ConversionModel{
+class TextConversion{
 
     public $id;
     public $clientid;
