@@ -1,9 +1,9 @@
 <?php
 
-require(dirname(__DIR__)."/core/http/requestbuilder.php)");
-require(dirname(__DIR__)."/core/http/responsebuilder.php)");
-require(dirname(__DIR__)."/core/http/request.php)");
-require(dirname(__DIR__)."/core/http/response.php)");
+require(dirname(__DIR__)."\\core\\http\\requestbuilder.php");
+require(dirname(__DIR__)."/core/http/responsebuilder.php");
+require_once(dirname(__DIR__)."/core/http/request.php");
+require_once(dirname(__DIR__)."/core/http/response.php");
 spl_autoload_register('auto_loader');
 
     function auto_loader($class){
@@ -62,7 +62,7 @@ spl_autoload_register('auto_loader');
             $statustext = "";
             $contenttype = "";
 
-            $rawpayload = $this->controller->list($apikey, $resourceID);
+            $rawpayload = $this->controller->getHistory($apikey);
 
             if(count($rawpayload) > 0){
                 $statuscode = 200;
@@ -91,5 +91,7 @@ spl_autoload_register('auto_loader');
             $this->response = $responseBuilder->getResponse();
         }
     }
+
+    
     
     ?>

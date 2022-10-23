@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2022 at 01:32 AM
+-- Generation Time: Oct 23, 2022 at 12:07 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -36,14 +36,6 @@ CREATE TABLE `clients` (
   `api_key` varchar(254) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `clients`
---
-
-INSERT INTO `clients` (`id`, `name`, `license_number`, `licenses_startdate`, `license_enddate`, `api_key`) VALUES
-(1, 'NASA', '123', '', '', 'api123'),
-(2, 'TESLA', '1212', '', '', 'api456');
-
 -- --------------------------------------------------------
 
 --
@@ -55,19 +47,11 @@ CREATE TABLE `conversions` (
   `client_id` int(11) NOT NULL,
   `request_date` date NOT NULL,
   `completion_date` date NOT NULL,
-  `original_language` varchar(254) NOT NULL,
-  `translated_language` varchar(254) NOT NULL,
+  `original_fomrat` varchar(254) NOT NULL,
+  `converted_format` varchar(254) NOT NULL,
   `input_file` varchar(254) NOT NULL,
   `output_file` varchar(254) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `conversions`
---
-
-INSERT INTO `conversions` (`id`, `client_id`, `request_date`, `completion_date`, `original_language`, `translated_language`, `input_file`, `output_file`) VALUES
-(1, 1, '2022-10-01', '2022-10-02', 'French', 'English', 'test CDN', 'test CDN'),
-(2, 2, '2022-10-08', '2022-10-09', 'French', 'English', 'test CDN', 'test CDN');
 
 --
 -- Indexes for dumped tables
@@ -94,13 +78,13 @@ ALTER TABLE `conversions`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `conversions`
 --
 ALTER TABLE `conversions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
