@@ -12,9 +12,9 @@ spl_autoload_register('auto_loader');
     }
 
     class API{
-        private $requst;
-        private $response;
-        private $controller;
+        public $requst;
+        public $response;
+        public $controller;
 
         function __construct(){
 
@@ -24,7 +24,7 @@ spl_autoload_register('auto_loader');
             $requestBuilder = new RequestBuilder();
             $this->request = $requestBuilder->getRequest();
             $controllername = ucfirst($this->request->urlparams["resource"])."Controller";
-
+            var_dump($controllername);
             if(class_exists($controllername)){ // class_exists will call the spl_autoload_register
                 $this->controller = new $controllername();
             }else{
@@ -61,7 +61,7 @@ spl_autoload_register('auto_loader');
             $statuscode = 0;
             $statustext = "";
             $contenttype = "";
-
+            
             $rawpayload = $this->controller->getHistory($apikey);
 
             if(count($rawpayload) > 0){
@@ -92,6 +92,10 @@ spl_autoload_register('auto_loader');
         }
     }
 
-    
+    $api = new API();
+
+    $api->processRequest();
+
+    echo( $api->response->payload);
     
     ?>

@@ -26,7 +26,7 @@ class TextConversion{
                 WHERE client_id = 
                 (SELECT id 
                              FROM clients
-                             WHERE apikey = :apikey)';
+                             WHERE api_key = :apikey)';
         
         $statement = $this->conn->prepare($query);
         $statement->bindParam(':apikey', $apikey, PDO::PARAM_STR);
