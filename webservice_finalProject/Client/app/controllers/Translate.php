@@ -31,21 +31,7 @@ require_once dirname(__DIR__).'/models/clientModel.php';
                  var_dump($data);
              }
         }
+    
         
-        public function createUser(){
-            if(!isset($_POST['signup'])){
-                echo "apparently signup wasn't pressed";
-            }else{
-                $data=[
-                    'username' => trim($_POST['username']),
-                    'phone' => trim($_POST['contact_no']),
-                    'email' => trim($_POST['email']),
-                    'password' => trim($_POST['user_password'])
-                ];
-                if($this->model->createUser($data) == true){
-                    echo "User created";
-                }
-            }
-        }
     }
 ?>
