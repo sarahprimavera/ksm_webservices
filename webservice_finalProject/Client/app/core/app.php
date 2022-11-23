@@ -17,6 +17,7 @@
         public function __construct()
         {  
             $url = $this->parseURL();
+            
 
             if(file_exists('../app/controllers/'.$url[0].'.php')){
                 $this->currentController = $url[0];

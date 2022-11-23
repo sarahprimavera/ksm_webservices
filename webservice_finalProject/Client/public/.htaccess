@@ -1,0 +1,11 @@
+Options -MultiViews
+
+RewriteEngine on
+
+RewriteBase /FinalProject/ksm_webservices/webservice_finalProject/Client/public
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+RewriteRule ^()$ index.php?url=$1 [QSA,L]
