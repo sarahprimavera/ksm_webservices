@@ -36,6 +36,7 @@
                 //check to see if such method exists in the conroller 
                 if(method_exists($this->currentController, $url[1])){
                     $this->currentMethod = $url[1];
+                    var_dump($currentController);
                     unset($url[1]);
                 }
             }

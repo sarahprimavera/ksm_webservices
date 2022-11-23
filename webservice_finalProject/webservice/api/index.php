@@ -24,7 +24,7 @@ spl_autoload_register('auto_loader');
             $requestBuilder = new RequestBuilder();
             $this->request = $requestBuilder->getRequest();
             $controllername = ucfirst($this->request->urlparams["resource"])."Controller";
-            var_dump($controllername);
+            
             if(class_exists($controllername)){ // class_exists will call the spl_autoload_register
                 $this->controller = new $controllername();
             }else{
@@ -54,8 +54,9 @@ spl_autoload_register('auto_loader');
         }
 
         function processGETResponse(){
+            
             $apikey = $this->request->urlparams['apikey'];
-            $clientID = $this->request->urlparams['id'];
+            // $clientID = $this->request->urlparams['id'];
             $header = array();
             $payload = array();
             $statuscode = 0;
