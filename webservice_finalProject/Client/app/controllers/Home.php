@@ -3,11 +3,11 @@
 // require_once dirname(dirname(__FILE__)).'/core/Controller.php';
 require_once dirname(__DIR__).'/models/clientModel.php';
 
-    class Home{
+    class Home extends Controller{
 
         public function index(){
             
-            // $this->view('home.php');
+            $this->view('home');
         }
 
         public function __construct(){
