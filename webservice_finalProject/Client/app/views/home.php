@@ -3,8 +3,8 @@
     
     <br>
     <div class="d-flex justify-content-center">
-        <form action="TestParse.php" method="post" enctype="multipart/form-data">
-            <!-- Example single danger button -->
+        <form action="/FinalProject/ksm_webservices/webservice_finalProject/Client/Translate/getInput" method="POST" enctype="multipart/form-data">
+            
         
             <label class="form-label" for="customFile">Upload Text File</label>
             <input type="file" class="form-control" id="customFile" />
@@ -26,6 +26,8 @@
                 <option value="it">Italian</option>
                 </select> <br><br>
             </div>
+            <br>
+            <Button type="submit" name="translate" >submit</Button>
         </form>
 
 </div>
