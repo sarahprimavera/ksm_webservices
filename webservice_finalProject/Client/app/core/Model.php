@@ -9,7 +9,7 @@ class Model
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
-    private $dbname = 'client_db';
+    private $dbname = 'client';
 
     private $dbh;
     private $stmt;
