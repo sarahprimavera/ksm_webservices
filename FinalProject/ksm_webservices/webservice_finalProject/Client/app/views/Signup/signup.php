@@ -1,103 +1,59 @@
 <?php
-    require_once dirname(__DIR__).'/controllers/signupController.php';
-    require_once dirname(__DIR__).'/core/Controller.php';
+//require_once dirname(__DIR__).'/controllers/signupController.php';
+//require_once dirname(__DIR__) . '/core/Controller.php';
+require APPROOT . '\views\includes\header.php';
+require APPROOT . '\views\includes\navbar.php';
 ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" 
-              href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
-              crossorigin="anonymous">
-    </head>
-    <body>
-        <div class="container">
 
-            <form class="well form-horizontal" action="" method="post"  id="signup">
-                <fieldset>
-            
-                    <!-- Form Name -->
-                    <legend><h2><b>Registration Form</b></h2></legend><br>
-                
-                    <!-- Text input-->
-                
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Name</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input  name="username" placeholder="Name" class="form-control"  type="text">
-                            </div>
-                        </div>
-                    </div>
-                
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">E-Mail</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
-                            </div>
-                        </div>
-                    </div>
-                
-                
-                    <!-- Text input-->
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Phone Number</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                <input name="contact_no" placeholder="(XXX) XXX-XXXX " class="form-control" type="text">
-                            </div>
-                        </div>
-                    </div>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<br>
 
-                    <!-- Text input-->
-                
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" >Password</label> 
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="user_password" placeholder="Password" class="form-control"  type="password">
-                            </div>
+<body>
+    <form class="well form-horizontal" action="" method="post" id="signup">
+        <div class="form-group right-text-styling w-60 p-4 mx-auto">
+            <!-- Center the text -->
+            <div class="row d-flex justify-content-center align-items-center h-10">
+                <!-- Card length -->
+                <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <!-- Length of the card's content -->
+                        <div class="card-body p-3">
+                            <h3 align="center">Sign Up</h3>
+                            <br />
+                            <input type="text" name="username" class="form-control" placeholder="Username" />
+                            <br />
+                            <input type="text" name="email" class="form-control" placeholder="Email" />
+                            <br /> <input type="text" name="contact_no" class="form-control" placeholder="Phone Number" />
+                            <br />
+                            <input type="password" name="password" class="form-control" placeholder="Password" />
+                            <br />
+                            <input type="password" name="password" class="form-control" placeholder="Confirm password" />
+                            <br />
+                            <div class="d-grid gap-2" align="center">
+                                <button class="btn btn-dark" name="signup" type="submit">Sign Up</button>
+                            </div><br>
+                            <p class="text-center">Already registered? <a href="<?= URLROOT ?>/Login" style="color:black;"> Login</a>
+                            </p>
                         </div>
                     </div>
-                
-                    <!-- Text input-->
-                
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" >Confirm Password</label> 
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
-                            </div>
-                        </div>
-                    </div>
-                
-                    <!-- Button -->
-                    <div class="form-group">
-                    <label class="col-md-4 control-label"></label>
-                    <div class="col-md-4"><br>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" name="signup" class="btn btn-dark" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSIGN UP<span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
-                    </div>
-                    </div>
-        
-                </fieldset>
-            </form>
+                </div>
+            </div>
         </div>
-        </div><!-- /.container -->
-    </body>
+    </form>
+</body>
+
+
+
 </html>
 
 <?php
-    if(isset($_POST['signup'])){
-        $controller = new signupController();
-        $controller->createUser();
-    }
+if (isset($_POST['signup'])) {
+    $controller = new signupController();
+    $controller->createUser();
+}
 ?>

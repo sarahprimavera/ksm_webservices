@@ -14,6 +14,12 @@
       <li class="nav-item">
         <a class="nav-link" href="<?= URLROOT ?>/Profile">Profile</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= URLROOT ?>/signupController"><i class="fa-solid fa-user-plus"></i> Signup</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= URLROOT ?>/Login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+      </li>
     </ul>
   </div>
 </nav>

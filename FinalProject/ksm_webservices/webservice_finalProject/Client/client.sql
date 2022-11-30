@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2022 at 07:01 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Generation Time: Nov 30, 2022 at 02:49 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,8 +48,23 @@ CREATE TABLE `user` (
   `name` varchar(255) NOT NULL,
   `phone_num` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `pass_hash` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `name`, `phone_num`, `email`, `password`, `pass_hash`) VALUES
+(1, '', '', '', '', ''),
+(2, 'admin1', '0000000000', 'turcan.madalina@yahoo.com', 'aaaaaaaa', ''),
+(3, '', '', '', '', ''),
+(4, '', '', '', '', ''),
+(5, '', '', '', '', ''),
+(6, '', '', '', '', ''),
+(7, '', '', '', '', ''),
+(8, '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -82,7 +97,7 @@ ALTER TABLE `translation`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
