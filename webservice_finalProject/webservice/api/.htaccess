@@ -1,5 +1,0 @@
-RewriteEngine on
-
-RewriteBase "/FinalProject/ksm_webservices/webservice_finalProject/webservice/api"
-
-RewriteRule (.*)/(.*) index.php?resource=$1&apikey=$2 [QSA]
