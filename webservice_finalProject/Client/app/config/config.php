@@ -2,7 +2,8 @@
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root
-  define('URLROOT', 'http://localhost/FinalProject/ksm_webservices/webservice_finalProject/Client');
+  define('URLROOT', 'http://localhost/webservice\ksm_webservices\webservice_finalProject\Client/public');
+  
   // Site Name
   define('SITENAME', 'Text Translator');
 
