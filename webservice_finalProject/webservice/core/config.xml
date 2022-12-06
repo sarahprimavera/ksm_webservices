@@ -1,9 +1,0 @@
-<?xml version="1.0" ?>
-<config>
-    <database>
-        <host>localhost</host>
-        <user>root</user>
-        <password></password>
-        <dbname>server</dbname>
-    </database>
-</config>
