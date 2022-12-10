@@ -12,5 +12,9 @@ class UserController{
     function addUser($data){
         return $this->textconversion->addClient($data);
     }
+
+    function updateUsername($data){
+        return $this->textconversion->updateUser($data);
+    }
 }
 ?>

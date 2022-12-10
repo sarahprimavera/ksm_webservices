@@ -39,6 +39,7 @@ spl_autoload_register('auto_loader');
                     $this->processPOSTResponse();
                     break;
                 case 'PUT':
+                    $this->processPUTResponse();
                     break;
                 case 'DELETE':
                     break;
@@ -49,6 +50,35 @@ spl_autoload_register('auto_loader');
             }
         }
 
+        function processPUTResponse(){
+            if ($this->request->urlparams["resource"] == "User"){
+                $payload_stuff = $this->request->payload;
+                $data = [
+                    'user' => $payload_stuff['user'],
+                    'api' => $payload_stuff['api']
+                ];
+                $rawpayload = $this->controller->updateUsername($data);
+                if ($rawpayload){
+                    $rawpayload = array('message' => "Successfully modified");
+                    $payload = json_encode($rawpayload);
+                    $statuscode = '204';
+                    $statustext = 'No Content';
+                    $contenttype = 'application/json';
+                    $headerfields = ['Status-Code'=> $statuscode, 'Status-Text' => $statustext, 'Content-Type' => $contenttype ];
+                    $responseBuilder  = new Responsebuilder($headerfields, $payload);
+                    $this->response = $responseBuilder->getResponse();
+                }else{
+                    $rawpayload = array('message' => "Not able to modify, maybe entered something wrong");
+                    $payload = json_encode($rawpayload);
+                    $statuscode = '400';
+                    $statustext = 'Bad Request';
+                    $contenttype = 'application/json';
+                    $headerfields = ['Status-Code'=> $statuscode, 'Status-Text' => $statustext, 'Content-Type' => $contenttype ];
+                    $responseBuilder  = new Responsebuilder($headerfields, $payload);
+                    $this->response = $responseBuilder->getResponse();
+                }
+            }
+        }
         function processPOSTResponse(){
             if ($this->request->urlparams["resource"] == "User"){
                 //adding user to server db

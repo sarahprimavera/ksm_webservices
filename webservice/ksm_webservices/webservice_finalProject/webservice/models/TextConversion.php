@@ -106,6 +106,14 @@ class TextConversion{
         }
     }
 
+    function updateUser($data){
+        $query = "UPDATE `clients` SET `name` = :name WHERE `clients`.`api_key` = :api_key;";
+
+        $statement = $this->conn->prepare($query);
+        $statement->bindParam(':name', $data['user']);
+        $statement->bindParam(':api_key', $data['api']);
+        return $statement->execute();
+    }
     function generateLicenseNum(){
         $tokens = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
         $license_string = '';
