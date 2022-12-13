@@ -34,22 +34,24 @@ class signupController
                 if ($this->model->createUser($data)) {
                     $ch = curl_init();
                     $url = "http://localhost/webservice/ksm_webservices/webservice_finalProject/webservice/api/User/";
-                    curl_setopt($ch, CURLOPT_URL,$url);
+                    curl_setopt($ch, CURLOPT_URL, $url);
                     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                         'Accept: application/json'
-                    ));   
-           
+                    ));
+
                     curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, "username=".$data['username']."&apikey=".$data['api_key']);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, "username=" . $data['username'] . "&apikey=" . $data['api_key']);
                     $results = curl_exec($ch);
                     curl_close($ch);
+                    echo ('<div class="alert alert-dark text-center" role="alert">');
                     echo 'Please wait creating the account for ' . trim($_POST['username']);
-                    echo '<meta http-equiv="Refresh" content="2; url=http://localhost/webservice/ksm_webservices/webservice_finalProject/Client/Login">';
+                    echo ('</div>');
+                    echo '<meta http-equiv="Refresh" content="2; url=http://localhost/FinalProject/ksm_webservices/webservice_finalProject/Client/Login">';
                 }
             } else {
-                $data = [
-                    'msg' => "User: " . $_POST['username'] . " already exists",
-                ];
+                echo ('<div class="alert alert-dark text-center" role="alert">');
+                echo 'User ' . $_POST['username'] . ' already exists';
+                echo ('</div>');
                 $this->controller->view('Signup/signup');
             }
         }

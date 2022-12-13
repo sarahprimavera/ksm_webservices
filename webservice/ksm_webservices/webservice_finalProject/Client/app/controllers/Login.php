@@ -1,4 +1,10 @@
 <?php
+
+use Monolog\Level;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\FirePHPHandler;
+
 require_once dirname(__DIR__) . '/models/clientModel.php';
 require_once dirname(__DIR__) . '/models/loginModel.php';
 
@@ -14,7 +20,6 @@ class Login extends Controller
         if (!isset($_POST['login'])) {
             $this->view('Login/login');
         } else {
-            echo "else";
             $user = $this->loginModel->getUser($_POST['username']);
             if ($user != null) {
                 $hashed_pass = $user->pass_hash;
@@ -26,17 +31,27 @@ class Login extends Controller
                         'msg' => "Welcome, $user->name!",
                     ];
                     $this->view('Home/home', $data);
+
+                    // LOGGING
+                    // Create the logger
+                    $logger = new Logger('my_logger');
+                    // Now add some handlers
+                    $logger->pushHandler(new StreamHandler(dirname(dirname(__FILE__)) . '/logs/logging.log', Level::Debug));
+                    $logger->pushHandler(new FirePHPHandler());
+
+                    // You can now use your logger
+                    $logger->info($user->name . ' logged in successfully');
                 } else {
-                    $data = [
-                        'msg' => "Password incorrect! for $user->name",
-                    ];
-                    $this->view('Login/login', $data);
+                    $this->view('Login/login');
+                    echo ('<div class="alert alert-danger text-center" role="alert">');
+                    echo 'Password incorrect for ' . $user->name . ' !';
+                    echo ('</div>');
                 }
             } else {
-                $data = [
-                    'msg' => "User: " . $_POST['username'] . " does not exists",
-                ];
-                $this->view('Login/login', $data);
+                $this->view('Login/login');
+                echo ('<div class="alert alert-danger text-center" role="alert">');
+                echo 'User does not exist !';
+                echo ('</div>');
             }
         }
     }
@@ -57,6 +72,6 @@ class Login extends Controller
     {
         unset($_SESSION['user_id']);
         session_destroy();
-        //header('Location: /MVC/Home');
+        header('Location: http://localhost/FinalProject/ksm_webservices/webservice_finalProject/Client/home');
     }
 }

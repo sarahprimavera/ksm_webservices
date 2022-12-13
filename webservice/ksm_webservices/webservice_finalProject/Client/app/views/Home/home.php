@@ -1,6 +1,12 @@
 <?php require APPROOT . '\views\includes\header.php'; ?>
 <?php require APPROOT . '\views\includes\navbar.php'; ?>
-
+<?php
+if (!empty($data['msg'])) {
+    echo ('<div class="alert alert-success alert-dismissible show" role="alert">');
+    echo ('' . $data['msg'] . '');
+    echo ('<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+}
+?>
 <br>
 <div class="container text-center">
     <form action="/webservice\ksm_webservices\webservice_finalProject/Client/Translate/getInput" method="POST" enctype="multipart/form-data">
@@ -230,10 +236,19 @@
             </div> <br>
 
             <!-- Translate button -->
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-dark" name="translate" style="width: 70%;"> Translate
-                </button>
-            </div>
+            <?php
+            if (!isLoggedIn()) {
+                echo '<div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark" disabled name="translate" style="width: 70%;"> Translate
+                    </button>
+                </div>';
+            } else {
+                echo '<div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark" name="translate" style="width: 70%;"> Translate
+                    </button>
+                </div>';
+            }
+            ?>
     </form>
 </div>
 
